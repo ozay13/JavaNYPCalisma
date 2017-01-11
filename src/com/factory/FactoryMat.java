@@ -24,7 +24,7 @@ public class FactoryMat {
         return ret;
     }
 
-    public static int[][] to2D(List<Integer> list, int c) {
+    public static int[][] toList2D(List<Integer> list, int c) {
         int[][] ret = new int[(int) (list.size() / c)][c];
         int k = 0;
         for (int i = 0; i < list.size() / c; i++) {
@@ -34,7 +34,18 @@ public class FactoryMat {
         }
         return ret;
     }
-
+    public static int[][]toInt2D(Integer [][]v){
+        int[][]ret=new int[v.length][v[0].length];
+        int k=0,j=0;
+        for (Integer[] is : v) {
+            k++;
+            j=0;
+            for (Integer i : is) {
+                ret[k][j++]=(int)i;
+            }
+        }
+        return ret;
+    }
     public static List<Integer> toList(int[][] m) {
         List<Integer> liste = new ArrayList<>();
         for (int[] is : m) {
@@ -42,6 +53,14 @@ public class FactoryMat {
                 liste.add(k);
             }
         }
+        return liste;
+
+    }
+      public static List<Integer> toList(int[]m) {
+        List<Integer> liste = new ArrayList<>();
+            for (int k :m) {
+                liste.add(k);
+            }
         return liste;
 
     }

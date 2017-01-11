@@ -10,7 +10,7 @@ package com.test;
  * @author ozaytunctan13
  */
 public class Notlar {
-    
+
     public static void main(String[] args) {
         //Clone:bir nesnenin kopyasını almak için kullanılır Object nesnesinin bir fonksiyonudur.
         //shell:Bir sınıf değişkenin ilk hali primitif ise shelldir

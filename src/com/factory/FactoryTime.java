@@ -22,7 +22,7 @@ public class FactoryTime {
     public static long toc() {
         end = System.currentTimeMillis();
         elapsed = (end - start);
-        System.out.println("Elapsed time is:"+elapsed);
+        System.out.println("Elapsed time is:" + elapsed);
         return elapsed;
 
     }

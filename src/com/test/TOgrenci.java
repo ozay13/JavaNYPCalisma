@@ -20,6 +20,6 @@ public class TOgrenci {
         System.out.println(ogr2.toString());
         System.out.println(ogr.compareTo(ogr2));
         System.out.println(ogr.equals(ogr));
-        
+
     }
 }
