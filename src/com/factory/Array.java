@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.matrix;
+package com.factory;
 
 import com.factory.FactoryMat;
+import com.matrix.Matrix;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -56,19 +57,19 @@ public final class Array {
         Integer[][] cast = new Integer[1][1];
         List<Integer[]> liste = new ArrayList<>();
         List<Integer> vList = FactoryMat.toList(d);
-        
+
         int frekans = 0;
-        for (int i = 0; i <d.length; i++) {
+        for (int i = 0; i < d.length; i++) {
             Integer[] pointer = new Integer[2];
             frekans = 0;
             Integer value = vList.get(i);
-            for (int j = 0; j <vList.size(); j++) {
+            for (int j = 0; j < vList.size(); j++) {
                 if (value.compareTo(vList.get(j)) == 0) {
                     frekans++;
                     vList.remove(j);
-                   j=0;
+                    j = 0;
                 }
-                
+
             }
             pointer[0] = value;
             pointer[1] = frekans;
@@ -93,7 +94,15 @@ public final class Array {
         }
         return ret;
     }
-
+public static double[][] randomArrayDouble(double min, double max, int r, int c) {
+        double[][] ret = new double[r][c];
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < r; j++) {
+                ret[i][j] =(Math.random() * (max - min)) + min;
+            }
+        }
+        return ret;
+    }
     public static int[] randomArrayUnique(int min, int max, int size) {
         if (size <= Math.abs(max - min)) {
             int[] d = new int[size];
@@ -144,6 +153,15 @@ public final class Array {
         return m;
     }
 
+    public static double[][] split2D(Matrix cm, int from, int to) {
+        double[][] ret = new double[to-from][cm.getCols()];
+        int k = 0;
+        for (int j = from; j < to; j++) {
+            ret[k++] = cm.getValue()[j];
+        }
+        return ret;
+    }
+
     public static String println(int[] d) {
         return Arrays.toString(d);
     }
@@ -165,7 +183,7 @@ public final class Array {
 //        System.out.println(Array.println(d));
         int[][] v = Array.frekans1D(d);
         System.out.println(Array.println(v));
-
+        System.out.println(" ");
     }
 
 }

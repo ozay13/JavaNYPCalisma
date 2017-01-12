@@ -23,7 +23,30 @@ public class FactoryMat {
         }
         return ret;
     }
-
+    public static int[][]toCastInt(double[][]d){
+        int [][]ret=new int[d.length][d[0].length];
+        int i=0,j=0;
+        for (double[] ds : d) {
+            i++;
+            j=0;
+            for (double e : ds) {
+                ret[i][j]=(int)e;
+            }
+        }
+        return ret;
+    }
+    public static double[][]toCastDouble(int[][]d){
+        double [][]ret=new double[d.length][d[0].length];
+        int i=0,j=0;
+        for (int[] ds : d) {
+            i++;
+            j=0;
+            for (double e : ds) {
+                ret[i][j]=e;
+            }
+        }
+        return ret;
+    }
     public static int[][] toList2D(List<Integer> list, int c) {
         int[][] ret = new int[(int) (list.size() / c)][c];
         int k = 0;

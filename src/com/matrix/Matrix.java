@@ -6,6 +6,7 @@
 package com.matrix;
 
 import com.factory.FactoryMat;
+import java.lang.reflect.Array;
 
 /**
  *
@@ -24,6 +25,13 @@ public class Matrix {
         this.col = c;
     }
 
+    private Matrix(Matrix cm) {
+        this.cm = cm.getValue();
+        this.row = cm.getRows();
+        this.col = cm.getCols();
+        this.clone = cm;
+    }
+
     private Matrix(double[][] m) {
         cm = new double[m.length][m[0].length];
         this.row = m.length;
@@ -34,11 +42,15 @@ public class Matrix {
     public static Matrix getInstance(int r, int c) {
         return new Matrix(r, c);
     }
-
+    public Matrix randDouble(int min,int max,int r,int c){
+        return new Matrix((com.factory.Array.randomArrayDouble(min, max, r, c)));
+    }
     public static Matrix getInstance(double[][] m) {
         return new Matrix(m);
     }
-
+    public static Matrix getInstance (Matrix cm){
+        return new Matrix(cm);
+    }
     public int getRows() {
         return this.row;
     }
@@ -87,7 +99,7 @@ public class Matrix {
         return new Matrix(ret);
     }
 
-    public Matrix randDouble(int min, int max, int r, int c) {
+    public Matrix randi(int min, int max, int r, int c) {
         return new Matrix(FactoryMat.rand2D(min, max, r, c));
     }
 
