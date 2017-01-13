@@ -5,6 +5,10 @@
  */
 package com.test;
 
+import java.text.DateFormat;
+import java.util.Locale;
+import javax.swing.text.DateFormatter;
+
 /**
  *
  * @author ozaytunctan13
@@ -15,5 +19,6 @@ public class Notlar {
         //Clone:bir nesnenin kopyasını almak için kullanılır Object nesnesinin bir fonksiyonudur.
         //shell:Bir sınıf değişkenin ilk hali primitif ise shelldir
         //deep:Bir sınıf değişkenin veya uyesinin primitif oluncaya kadar aranmasıdır.
+        
     }
 }

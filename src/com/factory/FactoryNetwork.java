@@ -15,8 +15,6 @@ import com.matrix.Matrix;
  * @author ozaytunctan13
  */
 public final class FactoryNetwork {
-    
-    
     public static DataSet networkIntervalTrainTest(Matrix cm,double oran){
         DataSet ret=new DataSet();
         int row=cm.getRows();
@@ -30,7 +28,6 @@ public final class FactoryNetwork {
         }
         return ret;
     }
-    
     public static boolean trainStart(Matrix train,NeuralNetwork head,TrainInputLayer t){
         return true;
     }

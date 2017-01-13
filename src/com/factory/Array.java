@@ -94,15 +94,17 @@ public final class Array {
         }
         return ret;
     }
-public static double[][] randomArrayDouble(double min, double max, int r, int c) {
+
+    public static double[][] randomArrayDouble(double min, double max, int r, int c) {
         double[][] ret = new double[r][c];
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < r; j++) {
-                ret[i][j] =(Math.random() * (max - min)) + min;
+                ret[i][j] = (Math.random() * (max - min)) + min;
             }
         }
         return ret;
     }
+
     public static int[] randomArrayUnique(int min, int max, int size) {
         if (size <= Math.abs(max - min)) {
             int[] d = new int[size];
@@ -142,6 +144,39 @@ public static double[][] randomArrayDouble(double min, double max, int r, int c)
         return list;
     }
 
+    public static int speedBinarySearch1D(int[] dizi, int arananSayi) {
+        List<Integer> temp = FactoryMat.toList(dizi);
+        int[] clone = dizi.clone();
+        Arrays.parallelSort(clone);
+        int bas = 0; // dizinin baslangıç indisini buluyoruz
+        int son = dizi.length - 1; // dizinin son indisini buluyoruz
+        while (bas <= son) { //
+            int orta = (son + bas) / 2; // dizinin orta noktasını buluyoruz 
+            if (arananSayi == clone[orta]) {
+                return temp.indexOf(arananSayi);
+            }
+            if (arananSayi < clone[orta]) {
+                son = orta - 1;
+            } else {
+                bas = orta + 1;
+            }
+        }
+        return -1;
+    }
+
+    public static Point speedBinarySearch2D(int[][] dizi, int arananSayi) {
+        int k = -1;
+        for (int[] is : dizi) {
+            k++;
+            int ret = speedBinarySearch1D(is, arananSayi);
+            if (ret >= 0) {
+                Point px = new Point(k, ret);
+                return px;
+            }
+        }
+        return new Point();
+    }
+
     public static String println(int[][] d) {
         String m = "Matrix(" + d.length + "X" + d[0].length + ")\n";
         for (int i = 0; i < d.length; i++) {
@@ -154,7 +189,7 @@ public static double[][] randomArrayDouble(double min, double max, int r, int c)
     }
 
     public static double[][] split2D(Matrix cm, int from, int to) {
-        double[][] ret = new double[to-from][cm.getCols()];
+        double[][] ret = new double[to - from][cm.getCols()];
         int k = 0;
         for (int j = from; j < to; j++) {
             ret[k++] = cm.getValue()[j];
@@ -177,13 +212,16 @@ public static double[][] randomArrayDouble(double min, double max, int r, int c)
 //            Point p1 = index.get(i);
 //            System.out.println("[row:" + p1.x + ",col:" + p1.y + "]");
 //        }
+
         int[] d = {10, 2, 45, 3, 9, 10};
+        int[][] d2 = {{10, 2, 45},
+                      {3, 9, 10}};
 //        System.out.println(Array.println(d));
 //        Array.swap(d, 4, 1);
 //        System.out.println(Array.println(d));
-        int[][] v = Array.frekans1D(d);
-        System.out.println(Array.println(v));
-        System.out.println(" ");
+//        int[][] v = Array.frekans1D(d);
+//        System.out.println(Array.println(v));
+//        System.out.println(" ");       
+        System.out.println(Array.speedBinarySearch2D(d2, 45).toString());
     }
-
 }
